@@ -14,7 +14,7 @@ public class Currency {
     public double valueInUSD(double amount) {
         // @TODO:  Fill in the code for this
         // Round your final answer to 2 decimal points. See round() function.
-        double amt = 0;
+        double amt = 0.0;
         if(this.name == "CAD")
         {
             amt = (amount*0.75);
@@ -32,22 +32,16 @@ public class Currency {
 
     }
     public String getName() {
-        // @TODO:  Fill in the code for this
         return this.name;
 
     }
 
     public double getRate() {
-        // @TODO:  Fill in the code for this
         return this.rate;
     }
-
-
     public void setRate(Double rate) {
-        // @TODO:  Fill in the code for this
         this.rate = rate;
     }
-
     public double valueInThisCurrency(double amount, Currency othercurrency) {
 
         double currencyValue = 0.0;
