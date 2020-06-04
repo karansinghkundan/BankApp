@@ -55,17 +55,14 @@ public class BankTest {
 
     @Test
     public void testGetCurrency() {
-        Currency currency1 = new Currency("CAD",0.75);
-        assertEquals("CAD",currency1.getName());
-        assertEquals(0.75,currency1.getRate(),0.001);
+        assertEquals("CAD", new Currency("CAD",0.75).getName());
+        assertEquals(0.75, new Currency("CAD",0.75).getRate(),0.001);
 
-        Currency currency2 = new Currency("HKD",0.13);
-        assertEquals("HKD",currency2.getName());
-        assertEquals(0.13,currency2.getRate(),0.001);
+        assertEquals("HKD", new Currency("HKD",0.13).getName());
+        assertEquals(0.13, new Currency("HKD",0.13).getRate(),0.001);
 
-        Currency currency3 = new Currency("EUR",1.14);
-        assertEquals("EUR",currency3.getName());
-        assertEquals(1.14,currency3.getRate(),0.001);
+        assertEquals("EUR", new Currency("EUR",1.14).getName());
+        assertEquals(1.14, new Currency("EUR",1.14).getRate(),0.001);
     }
 
 
