@@ -17,13 +17,15 @@ public class Account {
     public void removeTimedPayment(String id) {
         timedpayments.remove(id);
     }
+
+
     public boolean timedPaymentExists(String id) {
         return timedpayments.containsKey(id);
     }
 
     public void tick() {
         for (TimedPayment tp : timedpayments.values()) {
-            tp.tick(); tp.tick();
+            tp.tick();
         }
     }
 

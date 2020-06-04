@@ -6,14 +6,15 @@ import java.math.RoundingMode;
 public class Currency {
     private String name;
     private double rate;
+    Currency[] cur = {new Currency("CAD",0.75),new Currency("EUR",1.14),new Currency("HKD",0.13)};
 
     public Currency(String currencyCode, double rate) {
         this.name = currencyCode;
         this.rate = rate;
     }
+
+
     public double valueInUSD(double amount) {
-        // @TODO:  Fill in the code for this
-        // Round your final answer to 2 decimal points. See round() function.
         double amt = 0.0;
         if(this.name == "CAD")
         {
