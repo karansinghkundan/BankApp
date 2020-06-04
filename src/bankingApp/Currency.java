@@ -6,7 +6,7 @@ import java.math.RoundingMode;
 public class Currency {
     private String name;
     private double rate;
-    Currency[] cur = {new Currency("CAD",0.75),new Currency("EUR",1.14),new Currency("HKD",0.13)};
+//    Currency[] cur = {new Currency("CAD",0.75),new Currency("EUR",1.14),new Currency("HKD",0.13)};
 
     public Currency(String currencyCode, double rate) {
         this.name = currencyCode;
