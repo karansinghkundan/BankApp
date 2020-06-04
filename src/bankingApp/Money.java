@@ -76,20 +76,20 @@ public class Money implements Comparable {
      */
     public boolean equals(Money other) {
         // @TODO:  Fill in the code for this
-        boolean check = false;
-        double thisAmt, otherAmt = 0.0;
-        thisAmt = this.getUniversalValue();
-        otherAmt = other.getUniversalValue();
+        boolean chk = false;
+        double actual, expected = 0.0;
+        actual = this.getUniversalValue();
+        expected = other.getUniversalValue();
 
-        if (thisAmt == otherAmt) {
-            check = true;
+        if (actual == expected) {
+            chk = true;
         }
         else
         {
-            check = false;
+            chk = false;
         }
 
-        return check;
+        return chk;
 
     }
 
@@ -138,16 +138,16 @@ public class Money implements Comparable {
      */
     public boolean isZero() {
         // @TODO:  Fill in the code for this
-        boolean check = false;
+        boolean chk = false;
 
         if (this.amount == 0.0) {
-            check = true;
+            chk = true;
         }
         else {
-            check = false;
+            chk = false;
         }
 
-        return check;
+        return chk;
 
     }
     /**
@@ -160,9 +160,7 @@ public class Money implements Comparable {
 
         negate = negate - (negate * 2);
 
-        Money negateMoney = new Money(negate, this.currency);
-
-        return negateMoney;
+        return new Money(negate, this.currency);
     }
 
     /**
@@ -176,24 +174,24 @@ public class Money implements Comparable {
      */
     public int compareTo(Object other) {
         // @TODO:  Fill in the code for this
-        int checkValue = 0;
+        double checkValue = 0;
         Money newObject = (Money)other;
-        double thisAmount = 0.0;
-        double otherAmount = 0.0;
+        double actual = 0.0;
+        double expected = 0.0;
 
-        thisAmount = this.getUniversalValue();
-        otherAmount = newObject.getUniversalValue();
+        actual = this.getUniversalValue();
+        expected = newObject.getUniversalValue();
 
-        if (thisAmount == otherAmount) {
-            checkValue = 0;
+        if (actual == expected) {
+            checkValue = 0.0;
         }
-        else if (thisAmount > otherAmount)
+        else if (actual > expected)
         {
-            checkValue = (int) (thisAmount - otherAmount);
+            checkValue =  (actual - expected);
         }
         else {
-            checkValue = (int) (thisAmount - otherAmount);
+            checkValue =  (actual - expected);
         }
-        return checkValue;
+        return (int) checkValue;
     }
 }
