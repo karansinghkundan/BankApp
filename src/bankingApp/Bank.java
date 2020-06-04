@@ -15,9 +15,14 @@ public class Bank {
     public String getName() {
         return name;
     }
+
+
     public Currency getCurrency() {
         return currency;
     }
+
+
+
     public void openAccount(String accountid) throws AccountExistsException {
         if (accountlist.containsKey(accountid)) {
             throw new AccountExistsException();
