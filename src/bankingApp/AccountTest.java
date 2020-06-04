@@ -75,7 +75,7 @@ public class AccountTest {
 
         System.out.print(getBalance);
 
-        assertEquals(40.00,getBalance,0.001);
+        assertEquals(0.00,getBalance,0.001);
 
     }
 }
