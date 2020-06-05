@@ -3,12 +3,6 @@ package bankingApp;
 import org.junit.Before;
 import org.junit.Test;
 
-import bankingApp.Account;
-import bankingApp.AccountDoesNotExistException;
-import bankingApp.Bank;
-import bankingApp.Currency;
-import bankingApp.Money;
-
 import static org.junit.Assert.*;
 
 public class AccountTest {

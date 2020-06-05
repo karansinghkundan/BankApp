@@ -5,11 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import bankingApp.AccountDoesNotExistException;
-import bankingApp.AccountExistsException;
-import bankingApp.Bank;
-import bankingApp.Currency;
-
 public class BankTest {
     protected Currency CAD;
     protected Currency HKD;
@@ -66,7 +61,7 @@ public class BankTest {
     }
 
 
-   /* @Test (expected = AccountExistsException.class)
+   @Test (expected = AccountExistsException.class)
     public void testOpenAccount() throws AccountExistsException {
         RBC.openAccount("Marcos");
     }
@@ -75,11 +70,11 @@ public class BankTest {
     public void testDeposit() throws AccountDoesNotExistException {
         RBC.deposit("Marcos",new Money(105,CAD));
     }
-*/
+
     @Test (expected = AccountDoesNotExistException.class)
     public void testWithdraw() throws AccountDoesNotExistException {
 
-        RBC.withdraw("Marcccos",new Money(15,CAD));
+        RBC.withdraw("Mars",new Money(15,CAD));
 
     }
 
