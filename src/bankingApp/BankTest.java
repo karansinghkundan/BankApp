@@ -1,6 +1,7 @@
 package bankingApp;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,10 +62,22 @@ public class BankTest {
     }
 
 // have to be resolved later
-   @Test (expected = AccountExistsException.class)
-    public void testOpenAccount() throws AccountExistsException {
-        RBC.openAccount("Marcos");
-    }
+   @Test public void testOpenAccount() throws AccountExistsException {
+       // If the function throws an exception, you should also test
+       // that the exception gets called properly.
+       // See the example in class notes for testing exceptions.
+       //fail("Write test case here");
+       //RBC.openAccount("Marcos");
+       Exception exception = assertThrows(AccountExistsException.class, () -> {
+           RBC.openAccount("Marcos");
+
+       });
+
+       String expectedMessage = "Account Already Exist";
+       String actualMessage = exception.getMessage();
+       assertTrue(actualMessage.contains(expectedMessage));
+
+   }
 //have to be rsolved later
     @Test (expected = AccountDoesNotExistException.class)
     public void testDeposit() throws AccountDoesNotExistException {

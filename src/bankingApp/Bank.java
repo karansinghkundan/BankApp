@@ -9,8 +9,6 @@ public class Bank {
 
     /**
      * Create a new bank.
-     * @param name Name of this bank
-     * @param currency Base currency of this bank (Example - Canadian banks will have base currency of CAD.  American banks will have base currency of USD.)
      */
     public Bank(String bankName, Currency baseCurrencyCode) {
         this.name = bankName;
@@ -61,7 +59,7 @@ public class Bank {
         else {
             Money m = new Money(money.getAmount(), new Currency("USD", money.getCurrency().getRate()));
             Account account = accountlist.get(accountid);
-            account.content = account.content.add(m);
+            account.deposit(m);
         }
     }
 
@@ -77,7 +75,7 @@ public class Bank {
         }
         else {
             Account account = accountlist.get(accountid);
-            account.content = account.content.add(money);
+            account.deposit(money);
         }
     }
 
@@ -111,8 +109,7 @@ public class Bank {
         }
         else {
             accountlist.get(fromaccount).withdraw(amount);
-            Account account = tobank.accountlist.get(toaccount);
-            account.content = account.content.add(amount);
+            tobank.accountlist.get(toaccount).deposit(amount);
         }
     }
 

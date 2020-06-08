@@ -28,7 +28,9 @@ public class Account {
             tp.tick();
         }
     }
-
+    public void deposit(Money money) {
+        content = content.add(money);
+    }
 
     public void withdraw(Money money) {
         content = content.subtract(money);
@@ -37,6 +39,7 @@ public class Account {
     public Money getBalance() {
         return content;
     }
+
     private class TimedPayment {
         private int interval, next;
         private Account fromaccount;
