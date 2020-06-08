@@ -12,6 +12,8 @@ public class BankTest {
     protected Bank RBC;
     protected Bank TD;
     protected Bank HSBC;
+    protected Money CAD10;
+
 
 
     @Before
@@ -73,7 +75,7 @@ public class BankTest {
 
        });
 
-       String expectedMessage = "Account Already Exist";
+       String expectedMessage = "Account  Exist";
        String actualMessage = exception.getMessage();
        assertTrue(actualMessage.contains(expectedMessage));
 
