@@ -19,7 +19,6 @@ public class Money implements Comparable {
      * @return Amount of money as an double type.
      */
     public double getAmount() {
-        // @TODO:  Fill in the code for this
         return this.amount;
 
     }
