@@ -60,12 +60,12 @@ public class BankTest {
         assertEquals(1.14, new Currency("EUR",1.14).getRate(),0.001);
     }
 
-
+// have to be resolved later
    @Test (expected = AccountExistsException.class)
     public void testOpenAccount() throws AccountExistsException {
         RBC.openAccount("Marcos");
     }
-
+//have to be rsolved later
     @Test (expected = AccountDoesNotExistException.class)
     public void testDeposit() throws AccountDoesNotExistException {
         RBC.deposit("Marcos",new Money(105,CAD));
