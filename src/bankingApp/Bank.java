@@ -61,7 +61,7 @@ public class Bank {
         else {
             Money m = new Money(money.getAmount(), new Currency("USD", money.getCurrency().getRate()));
             Account account = accountlist.get(accountid);
-            account.deposit(m);
+            account.content = account.content.add(m);
         }
     }
 
@@ -77,7 +77,7 @@ public class Bank {
         }
         else {
             Account account = accountlist.get(accountid);
-            account.deposit(money);
+            account.content = account.content.add(money);
         }
     }
 
@@ -111,7 +111,8 @@ public class Bank {
         }
         else {
             accountlist.get(fromaccount).withdraw(amount);
-            tobank.accountlist.get(toaccount).deposit(amount);
+            Account account = tobank.accountlist.get(toaccount);
+            account.content = account.content.add(amount);
         }
     }
 

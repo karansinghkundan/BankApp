@@ -3,7 +3,7 @@ package bankingApp;
 import java.util.Hashtable;
 
 public class Account {
-    private Money content;
+    public Money content;
     private Hashtable<String, TimedPayment> timedpayments = new Hashtable<String, TimedPayment>();
 
     public Account(String name, Currency currency) {
@@ -27,10 +27,6 @@ public class Account {
         for (TimedPayment tp : timedpayments.values()) {
             tp.tick();
         }
-    }
-
-    public void deposit(Money money) {
-        content = content.add(money);
     }
 
 
@@ -65,7 +61,7 @@ public class Account {
                     tobank.deposit(toaccount, amount);
                 }
                 catch (AccountDoesNotExistException e) {
-                    fromaccount.deposit(amount);
+                    fromaccount.content = fromaccount.content.add(amount);
                 }
                 return true;
             }
