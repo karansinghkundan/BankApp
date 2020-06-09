@@ -70,7 +70,7 @@ public void testOpenAccount() throws AccountExistsException  {
 
     // See the example in class notes for testing exceptions.
     Exception exception = assertThrows(AccountExistsException.class, () -> {
-        RBC.openAccount("Vipul");
+        RBC.openAccount("AMAN");
 
     });
 
@@ -103,7 +103,7 @@ public void testOpenAccount() throws AccountExistsException  {
 
         assertTrue(actualMessage.contains("Account doesnot Exist"));
     }
-    @Test
+    @Test(expected = AccountDoesNotExistException.class)
     public void testWithdraw() throws AccountDoesNotExistException {
         // If the function throws an exception, you should also test
         // that the exception gets called properly.
@@ -111,16 +111,7 @@ public void testOpenAccount() throws AccountExistsException  {
 
         HSBC.deposit("Pritesh",new Money(5,HKD));
         HSBC.getBalance("Pritesh");
-        assertEquals(38.46,HSBC.getBalance("Pritesh"),2);
-        RBC.withdraw("Macro",new Money(2,CAD));
-        assertEquals(23.08,RBC.getBalance("Macro"),2);
-
-        Exception exception = assertThrows(AccountDoesNotExistException.class, () -> {
-            RBC.withdraw("Macro",new Money(8.46,HKD));
-        });
-        String expectedMessage = "Account doestnot exits";
-        String actualMessage = exception.getMessage();
-        assertTrue(actualMessage.contains(expectedMessage));
+        assertEquals(5,HSBC.getBalance("Pritesh"),2);
 
 
 
