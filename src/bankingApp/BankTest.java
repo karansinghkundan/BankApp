@@ -64,34 +64,68 @@ public class BankTest {
     }
 
 // have to be resolved later
-   @Test public void testOpenAccount() throws AccountExistsException {
-       // If the function throws an exception, you should also test
-       // that the exception gets called properly.
-       // See the example in class notes for testing exceptions.
-       //fail("Write test case here");
-       //RBC.openAccount("Marcos");
-       Exception exception = assertThrows(AccountExistsException.class, () -> {
-           RBC.openAccount("Marcos");
+public void testOpenAccount() throws AccountExistsException  {
+    // If the function throws an exception, you should also test
+    // that the exception gets called properly.
 
-       });
+    // See the example in class notes for testing exceptions.
+    Exception exception = assertThrows(AccountExistsException.class, () -> {
+        RBC.openAccount("Vipul");
 
-       String expectedMessage = "Account  Exist";
-       String actualMessage = exception.getMessage();
-       assertTrue(actualMessage.contains(expectedMessage));
+    });
 
-   }
-//have to be rsolved later
+    String expectedMessage = "This account is already exist";
+    String actualMessage = exception.getMessage();
+    assertTrue(actualMessage.contains(expectedMessage));
+}
+
+
     @Test (expected = AccountDoesNotExistException.class)
     public void testDeposit() throws AccountDoesNotExistException {
-        RBC.deposit("Marcos",new Money(105,CAD));
-    }
+//deposit the amount in a new account
+        RBC.deposit("KARAN",new Money(10,HKD));
 
-    @Test (expected = AccountDoesNotExistException.class)
+ //checking the balance in the account
+        assertEquals(76.92,RBC.getBalance("KARAN"),0.001);
+
+  //checking to see if the error shows if deposited in an account that doesnot exist
+        String actualMessage = assertThrows(AccountDoesNotExistException.class, () -> {
+
+
+          //exceptional handlind working
+
+            RBC.deposit("XYZ",new Money(10,CAD));
+        }).getMessage();
+
+
+
+        //checking to see if the value is shown when encountered with an unknown account.
+
+        assertTrue(actualMessage.contains("Account doesnot Exist"));
+    }
+    @Test
     public void testWithdraw() throws AccountDoesNotExistException {
+        // If the function throws an exception, you should also test
+        // that the exception gets called properly.
+        // See the example in class notes for testing exceptions.
 
-        RBC.withdraw("Mars",new Money(15,CAD));
+        HSBC.deposit("Pritesh",new Money(5,HKD));
+        HSBC.getBalance("Pritesh");
+        assertEquals(38.46,HSBC.getBalance("Pritesh"),2);
+        RBC.withdraw("Macro",new Money(2,CAD));
+        assertEquals(23.08,RBC.getBalance("Macro"),2);
+
+        Exception exception = assertThrows(AccountDoesNotExistException.class, () -> {
+            RBC.withdraw("Macro",new Money(8.46,HKD));
+        });
+        String expectedMessage = "Account doestnot exits";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
+
+
 
     }
+
 
 
     @Test (expected = AccountDoesNotExistException.class)
