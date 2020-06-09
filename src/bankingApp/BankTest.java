@@ -115,6 +115,14 @@ public void testOpenAccount() throws AccountExistsException  {
         RBC.withdraw("Macro",new Money(2,CAD));
         assertEquals(23.08,RBC.getBalance("Macro"),2);
 
+//checking if withdraw work on an account that doesnot exist
+        Exception exception = assertThrows(AccountDoesNotExistException.class, () -> {
+         RBC.withdraw("emad",new Money(8.46,HKD));
+         });
+        assertTrue(exception.getMessage().contains("Account doesnot Exit"));
+
+
+
 
 
     }
