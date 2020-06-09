@@ -105,13 +105,15 @@ public void testOpenAccount() throws AccountExistsException  {
     }
     @Test(expected = AccountDoesNotExistException.class)
     public void testWithdraw() throws AccountDoesNotExistException {
-        // If the function throws an exception, you should also test
-        // that the exception gets called properly.
-        // See the example in class notes for testing exceptions.
 
+//depositing the amount in a open account and see if the amount is deposited
         HSBC.deposit("Pritesh",new Money(5,HKD));
         HSBC.getBalance("Pritesh");
         assertEquals(5,HSBC.getBalance("Pritesh"),2);
+
+       //checking to see if the amount can be withdrawn from the account
+        RBC.withdraw("Macro",new Money(2,CAD));
+        assertEquals(23.08,RBC.getBalance("Macro"),2);
 
 
 
