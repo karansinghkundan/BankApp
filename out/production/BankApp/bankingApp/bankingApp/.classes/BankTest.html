@@ -1,0 +1,235 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BankTest</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">bankingApp</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BankTest (bankingApp)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BankTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+  <span class="absValue">
+    (8/ 12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54.5%
+  </span>
+  <span class="absValue">
+    (30/ 55)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package bankingApp;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import static org.junit.Assert.*;
+<i>4</i>&nbsp;import static org.junit.jupiter.api.Assertions.assertThrows;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import org.junit.Before;
+<i>7</i>&nbsp;import org.junit.Test;
+<i>8</i>&nbsp;
+<b class="fc"><i>9</i>&nbsp;public class BankTest {</b>
+<i>10</i>&nbsp;    protected Currency CAD;
+<i>11</i>&nbsp;    protected Currency HKD;
+<i>12</i>&nbsp;    protected Bank RBC;
+<i>13</i>&nbsp;    protected Bank TD;
+<i>14</i>&nbsp;    protected Bank HSBC;
+<i>15</i>&nbsp;    protected Money CAD10;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @Before
+<i>20</i>&nbsp;    public void setUp() throws Exception {
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;        // setup some test currencies
+<b class="fc"><i>23</i>&nbsp;        this.HKD = new Currency(&quot;HKD&quot;, 0.13);</b>
+<b class="fc"><i>24</i>&nbsp;        this.CAD = new Currency(&quot;CAD&quot;, 0.75);</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;        // setup test banks
+<b class="fc"><i>27</i>&nbsp;        this.RBC = new Bank(&quot;Royal Bank of Canada&quot;, CAD);</b>
+<b class="fc"><i>28</i>&nbsp;        this.TD = new Bank(&quot;TD Bank&quot;, CAD);</b>
+<b class="fc"><i>29</i>&nbsp;        this.HSBC = new Bank(&quot;Hong Kong Shanghai Banking Corporation&quot;, HKD);</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;        // add sample customers to the banks
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;        // HINT:  uncomment these lines AFTER you test the openAccount() function
+<i>35</i>&nbsp;        // You can quickly uncomment / comment by highlighting the lines of code and pressing
+<i>36</i>&nbsp;        // CTRL + / on your keyboard  (or CMD + / for Macs)
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;        this.RBC.openAccount(&quot;Marcos&quot;, new Account(&quot;Peter&quot;, CAD));</b>
+<b class="fc"><i>39</i>&nbsp;        this.RBC.openAccount(&quot;Albert&quot;, new Account(&quot;Peter&quot;, CAD));</b>
+<b class="fc"><i>40</i>&nbsp;        this.TD.openAccount(&quot;Jigesha&quot;, new Account(&quot;Peter&quot;, CAD));</b>
+<b class="fc"><i>41</i>&nbsp;        this.HSBC.openAccount(&quot;Pritesh&quot;, new Account(&quot;Peter&quot;, CAD));</b>
+<b class="fc"><i>42</i>&nbsp;    }</b>
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    @Test
+<i>45</i>&nbsp;    public void testGetName() {
+<b class="fc"><i>46</i>&nbsp;        String nameOfBank1 = RBC.getName();</b>
+<b class="fc"><i>47</i>&nbsp;        assertEquals(&quot;Royal Bank of Canada&quot;,nameOfBank1);</b>
+<b class="fc"><i>48</i>&nbsp;        String nameOfBank2 = TD.getName();</b>
+<b class="fc"><i>49</i>&nbsp;        assertEquals(&quot;TD Bank&quot;,nameOfBank2);</b>
+<b class="fc"><i>50</i>&nbsp;        String nameOfBank3 = HSBC.getName();</b>
+<b class="fc"><i>51</i>&nbsp;        assertEquals(&quot;Hong Kong Shanghai Banking Corporation&quot;,nameOfBank3);</b>
+<b class="fc"><i>52</i>&nbsp;    }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    @Test
+<i>55</i>&nbsp;    public void testGetCurrency() {
+<b class="fc"><i>56</i>&nbsp;        assertEquals(&quot;CAD&quot;, new Currency(&quot;CAD&quot;,0.75).getName());</b>
+<b class="fc"><i>57</i>&nbsp;        assertEquals(0.75, new Currency(&quot;CAD&quot;,0.75).getRate(),0.001);</b>
+<i>58</i>&nbsp;
+<b class="fc"><i>59</i>&nbsp;        assertEquals(&quot;HKD&quot;, new Currency(&quot;HKD&quot;,0.13).getName());</b>
+<b class="fc"><i>60</i>&nbsp;        assertEquals(0.13, new Currency(&quot;HKD&quot;,0.13).getRate(),0.001);</b>
+<i>61</i>&nbsp;
+<b class="fc"><i>62</i>&nbsp;        assertEquals(&quot;EUR&quot;, new Currency(&quot;EUR&quot;,1.14).getName());</b>
+<b class="fc"><i>63</i>&nbsp;        assertEquals(1.14, new Currency(&quot;EUR&quot;,1.14).getRate(),0.001);</b>
+<b class="fc"><i>64</i>&nbsp;    }</b>
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;// have to be resolved later
+<i>67</i>&nbsp;public void testOpenAccount() throws AccountExistsException  {
+<i>68</i>&nbsp;    // If the function throws an exception, you should also test
+<i>69</i>&nbsp;    // that the exception gets called properly.
+<i>70</i>&nbsp;
+<i>71</i>&nbsp;    // See the example in class notes for testing exceptions.
+<b class="nc"><i>72</i>&nbsp;    Exception exception = assertThrows(AccountExistsException.class, () -&gt; {</b>
+<b class="nc"><i>73</i>&nbsp;        RBC.openAccount(&quot;AMAN&quot;, new Account(&quot;Peter&quot;, CAD));</b>
+<i>74</i>&nbsp;
+<b class="nc"><i>75</i>&nbsp;    });</b>
+<i>76</i>&nbsp;
+<b class="nc"><i>77</i>&nbsp;    String expectedMessage = &quot;This account is already exist&quot;;</b>
+<b class="nc"><i>78</i>&nbsp;    String actualMessage = exception.getMessage();</b>
+<b class="nc"><i>79</i>&nbsp;    assertTrue(actualMessage.contains(expectedMessage));</b>
+<b class="nc"><i>80</i>&nbsp;}</b>
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    @Test (expected = AccountDoesNotExistException.class)
+<i>84</i>&nbsp;    public void testDeposit() throws AccountDoesNotExistException {
+<i>85</i>&nbsp;//deposit the amount in a new account
+<b class="fc"><i>86</i>&nbsp;        RBC.deposit(&quot;KARAN&quot;,new Money(10,HKD));</b>
+<i>87</i>&nbsp;
+<i>88</i>&nbsp; //checking the balance in the account
+<b class="nc"><i>89</i>&nbsp;        assertEquals(76.92,RBC.getBalance(&quot;KARAN&quot;),0.001);</b>
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;  //checking to see if the error shows if deposited in an account that doesnot exist
+<b class="nc"><i>92</i>&nbsp;        String actualMessage = assertThrows(AccountDoesNotExistException.class, () -&gt; {</b>
+<i>93</i>&nbsp;
+<i>94</i>&nbsp;
+<i>95</i>&nbsp;          //exceptional handlind working
+<i>96</i>&nbsp;
+<b class="nc"><i>97</i>&nbsp;            RBC.deposit(&quot;XYZ&quot;,new Money(10,CAD));</b>
+<b class="nc"><i>98</i>&nbsp;        }).getMessage();</b>
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;        //checking to see if the value is shown when encountered with an unknown account.
+<i>103</i>&nbsp;
+<b class="nc"><i>104</i>&nbsp;        assertTrue(actualMessage.contains(&quot;Account doesnot Exist&quot;));</b>
+<b class="nc"><i>105</i>&nbsp;    }</b>
+<i>106</i>&nbsp;    @Test(expected = AccountDoesNotExistException.class)
+<i>107</i>&nbsp;    public void testWithdraw() throws AccountDoesNotExistException {
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;//depositing the amount in a open account and see if the amount is deposited
+<b class="fc"><i>110</i>&nbsp;        HSBC.deposit(&quot;Pritesh&quot;,new Money(5,HKD));</b>
+<b class="nc"><i>111</i>&nbsp;        HSBC.getBalance(&quot;Pritesh&quot;);</b>
+<b class="nc"><i>112</i>&nbsp;        assertEquals(5,HSBC.getBalance(&quot;Pritesh&quot;),2);</b>
+<i>113</i>&nbsp;
+<i>114</i>&nbsp;       //checking to see if the amount can be withdrawn from the account
+<b class="nc"><i>115</i>&nbsp;        RBC.withdraw(&quot;Macro&quot;,new Money(2,CAD));</b>
+<b class="nc"><i>116</i>&nbsp;        assertEquals(23.08,RBC.getBalance(&quot;Macro&quot;),2);</b>
+<i>117</i>&nbsp;
+<i>118</i>&nbsp;//checking if withdraw work on an account that doesnot exist
+<b class="nc"><i>119</i>&nbsp;        Exception exception = assertThrows(AccountDoesNotExistException.class, () -&gt; {</b>
+<b class="nc"><i>120</i>&nbsp;         RBC.withdraw(&quot;emad&quot;,new Money(8.46,HKD));</b>
+<b class="nc"><i>121</i>&nbsp;         });</b>
+<b class="nc"><i>122</i>&nbsp;        assertTrue(exception.getMessage().contains(&quot;Account doesnot Exit&quot;));</b>
+<i>123</i>&nbsp;
+<i>124</i>&nbsp;
+<i>125</i>&nbsp;
+<i>126</i>&nbsp;
+<i>127</i>&nbsp;
+<b class="nc"><i>128</i>&nbsp;    }</b>
+<i>129</i>&nbsp;
+<i>130</i>&nbsp;
+<i>131</i>&nbsp;
+<i>132</i>&nbsp;    @Test (expected = AccountDoesNotExistException.class)
+<i>133</i>&nbsp;    public void testGetBalance() throws AccountDoesNotExistException {
+<i>134</i>&nbsp;
+<b class="fc"><i>135</i>&nbsp;        double bal= 0.0;</b>
+<b class="fc"><i>136</i>&nbsp;        bal = RBC.getBalance(&quot;Marcos&quot;);</b>
+<b class="nc"><i>137</i>&nbsp;    }</b>
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;
+<i>140</i>&nbsp;    @Test (expected = AccountDoesNotExistException.class)
+<i>141</i>&nbsp;    public void testTransfer() throws AccountDoesNotExistException {
+<i>142</i>&nbsp;        // Note: You should test both types of transfers:
+<i>143</i>&nbsp;        // 1. Transfer from account to account
+<i>144</i>&nbsp;        // 2. Transfer between banks
+<i>145</i>&nbsp;        // See the Bank.java file for more details on Transfers
+<b class="fc"><i>146</i>&nbsp;        RBC.transfer(&quot;Marcos&quot;, TD, &quot;Albert&quot;, new Money(15,CAD));</b>
+<b class="nc"><i>147</i>&nbsp;        RBC.transfer(&quot;Marcos&quot;, &quot;Albert&quot;, new Money(15,CAD));</b>
+<b class="nc"><i>148</i>&nbsp;    }</b>
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-09 19:18</div>
+</div>
+</body>
+</html>
