@@ -35,10 +35,10 @@ public class BankTest {
         // You can quickly uncomment / comment by highlighting the lines of code and pressing
         // CTRL + / on your keyboard  (or CMD + / for Macs)
 
-        this.RBC.openAccount("Marcos");
-        this.RBC.openAccount("Albert");
-        this.TD.openAccount("Jigesha");
-        this.HSBC.openAccount("Pritesh");
+        this.RBC.openAccount("Marcos", new Account("Peter", CAD));
+        this.RBC.openAccount("Albert", new Account("Peter", CAD));
+        this.TD.openAccount("Jigesha", new Account("Peter", CAD));
+        this.HSBC.openAccount("Pritesh", new Account("Peter", CAD));
     }
 
     @Test
@@ -70,7 +70,7 @@ public void testOpenAccount() throws AccountExistsException  {
 
     // See the example in class notes for testing exceptions.
     Exception exception = assertThrows(AccountExistsException.class, () -> {
-        RBC.openAccount("AMAN");
+        RBC.openAccount("AMAN", new Account("Peter", CAD));
 
     });
 

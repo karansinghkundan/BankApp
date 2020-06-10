@@ -35,9 +35,10 @@ public class Bank {
     /**
      * Open an account at this bank.
      * @param accountid The ID of the account
+     * @param peter
      * @throws AccountExistsException If the account already exists
      */
-    public void openAccount(String accountid) throws AccountExistsException {
+    public void openAccount(String accountid, Account peter) throws AccountExistsException {
         if (accountlist.containsKey(accountid)) {
             throw new AccountExistsException("Account Exist");
         }

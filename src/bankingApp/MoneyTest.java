@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import bankingApp.Currency;
-import bankingApp.Money;
-
 public class MoneyTest {
     protected Currency CAD, HKD, NOK, EUR;
     protected Money CAD100, EUR10, CAD200, EUR20, CAD0, EUR0, CADnegative100, CAD152;
